@@ -1,0 +1,268 @@
+[
+  {
+    _id: ObjectId('678ca79ce2d6e03e5a08e9f9'),
+    korisnik: 1,
+    instruktor: 3,
+    usluga: 1,
+    datum: 2025-01-20T10:00:00.000Z,
+    id: 1
+  },
+  {
+    _id: ObjectId('678ca7a2e2d6e03e5a08e9fc'),
+    korisnik: 2,
+    instruktor: 4,
+    usluga: 2,
+    datum: 2025-01-22T12:00:00.000Z,
+    id: 2
+  },
+  {
+    _id: ObjectId('678ca7abe2d6e03e5a08e9ff'),
+    korisnik: 1,
+    instruktor: 3,
+    usluga: 3,
+    datum: 2025-01-25T15:30:00.000Z,
+    id: 3
+  },
+  {
+    _id: ObjectId('678ca7b1e2d6e03e5a08ea02'),
+    korisnik: 2,
+    instruktor: 4,
+    usluga: 5,
+    datum: 2025-01-30T09:00:00.000Z,
+    id: 4
+  },
+  {
+    _id: ObjectId('678cb289e2d6e03e5a08ec5e'),
+    korisnik: 2,
+    instruktor: 4,
+    usluga: 3,
+    datum: 2025-01-31T00:00:00.000Z,
+    id: 5
+  },
+  {
+    _id: ObjectId('678cb29ee2d6e03e5a08ec7a'),
+    korisnik: 2,
+    instruktor: 4,
+    usluga: 4,
+    datum: 2025-01-09T00:00:00.000Z,
+    id: 6
+  },
+  {
+    _id: ObjectId('67a3c12c658bc84267909af0'),
+    korisnik: 1,
+    instruktor: 3,
+    usluga: 2,
+    datum: 2025-02-05T00:00:00.000Z,
+    id: 7
+  },
+  {
+    _id: ObjectId('67a3c6e4a99ac87f27745e2b'),
+    korisnik: 1,
+    instruktor: 3,
+    usluga: 6,
+    datum: 2025-02-05T20:15:22.742Z,
+    id: 8
+  },
+  {
+    _id: ObjectId('67a3c81ea99ac87f27745ec3'),
+    korisnik: 1,
+    instruktor: 8,
+    usluga: 1,
+    datum: 2025-02-06T00:00:00.000Z,
+    id: 9
+  },
+  {
+    _id: ObjectId('67a3c8c3a99ac87f277460cd'),
+    korisnik: 9,
+    instruktor: 3,
+    usluga: 1,
+    datum: 2025-02-05T20:23:26.323Z,
+    id: 10
+  }
+]
+[
+  {
+    _id: ObjectId('678ca626e2d6e03e5a08e9c4'),
+    id: 1,
+    ime: 'Ana',
+    prezime: 'Anić',
+    email: 'ana.anic@example.com',
+    lozinka: '$2b$10$fLCaVoVwF6rS.aZjVuYe6OTbbXfr4KXOmyNdNqvo2L2rQeh5lJHFi',
+    razina_prava: 'korisnik'
+  },
+  {
+    _id: ObjectId('678ca62de2d6e03e5a08e9c8'),
+    id: 2,
+    ime: 'Ivan',
+    prezime: 'Ivić',
+    email: 'ivan.ivic@example.com',
+    lozinka: '$2b$10$5L4KaQmIUl/Dw2qfoIgCbeLmnlrxJvWb0qL.uhoVqzIxDHNaGT.Yi',
+    razina_prava: 'korisnik'
+  },
+  {
+    _id: ObjectId('678ca633e2d6e03e5a08e9cc'),
+    id: 3,
+    ime: 'Maja',
+    prezime: 'Majstorović',
+    email: 'maja.majstorovic@example.com',
+    lozinka: '$2b$10$DujhYyMLRSY4NMQlQvrvF.f94CvKF/LBxwymDAJShrqTlJKpByjaa',
+    razina_prava: 'instruktor'
+  },
+  {
+    _id: ObjectId('678ca638e2d6e03e5a08e9d0'),
+    id: 4,
+    ime: 'Petar',
+    prezime: 'Petrović',
+    email: 'petar.petrovic@example.com',
+    lozinka: '$2b$10$/vQqUsY4AcS.TfjeydWtc.FLuhQquw5RD5IISE1NA6OzSx/uz15Cm',
+    razina_prava: 'instruktor'
+  },
+  {
+    _id: ObjectId('678ca63de2d6e03e5a08e9d4'),
+    id: 5,
+    ime: 'Admin',
+    prezime: 'Administrator',
+    email: 'admin@example.com',
+    lozinka: '$2b$10$C87wxSzY5gmDjY6bHoE3kes2I2Yc00S.8KfgM1dmpnx53ZGQG5G1.',
+    razina_prava: 'admin'
+  },
+  {
+    _id: ObjectId('678f5bb40455df3da513b980'),
+    id: 6,
+    ime: 'Ana',
+    prezime: 'ana',
+    email: 'primjer@example.com',
+    lozinka: '$2b$10$ZMf7X9ipCcjWRrtfpgyIPuPJqDg2WJL/wAuKJKDtSh8sug/0lXbOC',
+    razina_prava: 'korisnik'
+  },
+  {
+    _id: ObjectId('67a3926be75d8d1fcc6af11b'),
+    ime: 'Probni',
+    prezime: 'POdsadas',
+    email: 'gregurovic@gmail.com',
+    lozinka: '$2b$10$L4lWbknMnYCvyZ.kZh9EpOfOkdukb1xY2YVg5cRo.hq8mBf/8eUWG',
+    razina_prava: 'korisnik',
+    id: 7
+  },
+  {
+    _id: ObjectId('67a3b699f3b3a5eb3301a645'),
+    id: 8,
+    ime: 'Instruktor',
+    prezime: 'Instruktoric',
+    email: 'instruktor.instruktoric@example.com',
+    lozinka: '$2b$10$in3STVy1H2OCH8yS2IFfdOJD/EY2QMtoQ0Nipv8YcE5aAUlmJP5PK',
+    razina_prava: 'instruktor'
+  },
+  {
+    _id: ObjectId('67a3c79ea99ac87f27745e6e'),
+    id: 9,
+    ime: 'Probni',
+    prezime: 'Korisnikk',
+    email: 'probni@example.com',
+    lozinka: '$2b$10$jak8KInb9GthdMP/KJutqOknx85Ep4CYJIYHV4PHdQ93gY77p0G.m',
+    razina_prava: 'korisnik'
+  },
+  {
+    _id: ObjectId('67a3c8f1a99ac87f27746144'),
+    ime: 'Marko',
+    prezime: 'Marić',
+    email: 'marko@example.com',
+    lozinka: '$2b$10$WPKq7EnpJNQP5bEQ5YJ6/eEZYsrmgd3URH.P3sc3aDj2NYz5Wkjhe',
+    razina_prava: 'korisnik',
+    id: 10
+  }
+]
+[
+  {
+    _id: ObjectId('67880b0e2cb4945c3d738ce5'),
+    ime: 'Kategorija A',
+    opis: 'Osnovna kategorija za motocikle.',
+    id: 1
+  },
+  {
+    _id: ObjectId('67880b85b40b953df79f3381'),
+    ime: 'Kategorija B',
+    opis: 'Kategorija za osobne automobile.',
+    id: 2
+  },
+  {
+    _id: ObjectId('67880ba6b40b953df79f3385'),
+    ime: 'Kategorija C',
+    opis: 'Kategorija za kamione i teža vozila.',
+    id: 3
+  },
+  {
+    _id: ObjectId('67a3c71ba99ac87f27745e4d'),
+    id: 4,
+    ime: 'Kategorija za uređivanje',
+    opis: 'Kategorija za uređivanje, uređeno'
+  }
+]
+[
+  {
+    _id: ObjectId('67880bc0b40b953df79f3388'),
+    ime: 'Osnovni sat vožnje',
+    opis: 'Osnovna obuka za vožnju u prometu.',
+    cijena: 150,
+    id: 1
+  },
+  {
+    _id: ObjectId('67880bd8b40b953df79f338b'),
+    ime: 'Kondicijski sat',
+    opis: 'Dodatna obuka za vozače koji žele osvježiti svoje vozačke vještine.',
+    cijena: 200,
+    id: 2
+  },
+  {
+    _id: ObjectId('67880c7fac38c4f984018316'),
+    ime: 'Priprema za polaganje ispita',
+    opis: 'Intenzivna obuka za pripremu kandidata za završni ispit.',
+    cijena: 300,
+    id: 3
+  },
+  {
+    _id: ObjectId('67880c8fac38c4f984018319'),
+    ime: 'Sat prve pomoći',
+    opis: 'Teoretska i praktična obuka iz pružanja prve pomoći.',
+    cijena: 100,
+    id: 4
+  },
+  {
+    _id: ObjectId('67880c97ac38c4f98401831c'),
+    ime: 'Vožnja na poligonu',
+    opis: 'Obuka na poligonu za manevriranje i parkiranje.',
+    cijena: 180,
+    id: 5
+  },
+  {
+    _id: ObjectId('67880c9dac38c4f98401831f'),
+    ime: 'Napredna obuka za vožnju',
+    opis: 'Obuka za vozače koji žele usavršiti svoje vozačke vještine u složenijim uvjetima.',
+    cijena: 250,
+    id: 6
+  },
+  {
+    _id: ObjectId('67a3c74ea99ac87f27745e5c'),
+    id: 7,
+    ime: 'Usluga za uređivanje',
+    opis: 'Usluga za uređivanje',
+    cijena: 10
+  }
+]
+[
+  {
+    _id: ObjectId('678ca755e2d6e03e5a08e9e8'),
+    korisnik: 3,
+    kategorije: [ 'A, B' ]
+  },
+  {
+    _id: ObjectId('678ca75ee2d6e03e5a08e9ed'),
+    korisnik: 4,
+    kategorije: [ 'A, C' ]
+  },
+  {
+    _id: ObjectId('67a3b6aaf3b3a5eb3301a64b'),
+    korisnik: 8,
+    kategorije: [ 'B' ]
+  }
+]
