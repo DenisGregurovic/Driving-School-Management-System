@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Kategorije</h1>
+
+  <!-- Tablica kategorija -->
+  <table *ngIf="kategorije.length > 0">
+    <thead>
+      <tr>
+        <th (click)="sort('id')">ID</th>
+        <th (click)="sort('ime')">Ime</th>
+        <th (click)="sort('opis')">Opis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let kategorija of kategorije | sort: sortColumn : isAscending">
+        <td>{{ kategorija.id }}</td>
+        <td>{{ kategorija.ime }}</td>
+        <td>{{ kategorija.opis }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="kategorije.length === 0">
+    <p>Nema dostupnih kategorija.</p>
+  </div>
+</div>

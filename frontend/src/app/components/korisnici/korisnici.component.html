@@ -1,0 +1,86 @@
+<div class="container">
+    <h1>Korisnici</h1>
+  
+    <!-- Dodavanje novog korisnika -->
+    <div class="add-user">
+      <h3>Dodaj novog korisnika</h3>
+      <input type="text" [(ngModel)]="newKorisnik.ime" placeholder="Ime" />
+      <input type="text" [(ngModel)]="newKorisnik.prezime" placeholder="Prezime" />
+      <input
+        type="email"
+        [(ngModel)]="newKorisnik.email"
+        placeholder="Email"
+        [ngClass]="{ invalid: !isValidEmail(newKorisnik.email) && newKorisnik.email.trim() }"
+      />
+      <input type="password" [(ngModel)]="newKorisnik.lozinka" placeholder="Lozinka" />
+      <select [(ngModel)]="newKorisnik.razina_prava">
+        <option value="admin">Admin</option>
+        <option value="korisnik">Korisnik</option>
+        <option value="instruktor">Instruktor</option>
+      </select>
+      <button
+        (click)="addKorisnik()"
+        [disabled]="!isValidUser(newKorisnik)"
+        class="add-button"
+      >
+        Dodaj
+      </button>
+    </div>
+  
+    <!-- Tablica korisnika -->
+    <table *ngIf="korisnici.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ime</th>
+          <th>Prezime</th>
+          <th>Email</th>
+          <th>Lozinka</th>
+          <th>Razina prava</th>
+          <th>Akcije</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let korisnik of korisnici">
+          <td>{{ korisnik.id }}</td>
+          <td *ngIf="!korisnik.isEditing">{{ korisnik.ime }}</td>
+          <td *ngIf="korisnik.isEditing"><input [(ngModel)]="korisnik.ime" /></td>
+          <td *ngIf="!korisnik.isEditing">{{ korisnik.prezime }}</td>
+          <td *ngIf="korisnik.isEditing"><input [(ngModel)]="korisnik.prezime" /></td>
+          <td *ngIf="!korisnik.isEditing">{{ korisnik.email }}</td>
+          <td *ngIf="korisnik.isEditing">
+            <input
+              [(ngModel)]="korisnik.email"
+              [ngClass]="{ invalid: !isValidEmail(korisnik.email) && korisnik.email.trim() }"
+            />
+          </td>
+          <td *ngIf="!korisnik.isEditing">{{ korisnik.lozinka }}</td>
+          <td *ngIf="korisnik.isEditing"><input [(ngModel)]="korisnik.lozinka" /></td>
+          <td>{{ korisnik.razina_prava }}</td>
+          <td>
+            <div class="button-group">
+              <ng-container *ngIf="!korisnik.isEditing">
+                <button class="edit-button" (click)="editKorisnik(korisnik)">Uredi</button>
+                <button class="delete-button" (click)="deleteKorisnik(korisnik.id)">Obriši</button>
+              </ng-container>
+              <ng-container *ngIf="korisnik.isEditing">
+                <button
+                  class="save-button"
+                  (click)="updateKorisnik(korisnik)"
+                  [disabled]="!isValidUpdatedUser(korisnik)"
+                >
+                  Spremi
+                </button>
+                <button class="cancel-button" (click)="cancelEdit(korisnik)">Odustani</button>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="korisnici.length === 0">
+      <p>Nema dostupnih korisnika.</p>
+    </div>
+  </div>
+  

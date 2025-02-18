@@ -1,0 +1,62 @@
+<div class="register-container">
+  <h2>Registracija</h2>
+  <form #registerForm="ngForm" (ngSubmit)="register()">
+    <div class="form-group">
+      <label for="ime">Ime</label>
+      <input
+        type="text"
+        [(ngModel)]="korisnik.ime"
+        name="ime"
+        required
+        placeholder="Unesite ime"
+        #ime="ngModel"
+      />
+      <div *ngIf="ime.invalid && ime.touched" class="error">Ime je obavezno</div>
+    </div>
+    <div class="form-group">
+      <label for="prezime">Prezime</label>
+      <input
+        type="text"
+        [(ngModel)]="korisnik.prezime"
+        name="prezime"
+        required
+        placeholder="Unesite prezime"
+        #prezime="ngModel"
+      />
+      <div *ngIf="prezime.invalid && prezime.touched" class="error">Prezime je obavezno</div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        [(ngModel)]="korisnik.email"
+        name="email"
+        required
+        placeholder="Unesite email"
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && email.touched" class="error">Email je obavezan</div>
+    </div>
+    <div class="form-group">
+      <label for="lozinka">Lozinka</label>
+      <input
+        type="password"
+        [(ngModel)]="korisnik.lozinka"
+        name="lozinka"
+        required
+        placeholder="Unesite lozinku"
+        #lozinka="ngModel"
+      />
+      <div *ngIf="lozinka.invalid && lozinka.touched" class="error">Lozinka je obavezna</div>
+    </div>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+    <button
+      type="submit"
+      [disabled]="!registerForm.valid"
+      class="btn btn-primary"
+    >
+      Registriraj se
+    </button>
+  </form>
+  <p>Već imate račun? <a routerLink="/login">Prijavite se</a></p>
+</div>

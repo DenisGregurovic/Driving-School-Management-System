@@ -1,0 +1,70 @@
+<div class="container">
+    <h1>Instruktori</h1>
+  
+    <!-- Dodavanje novog instruktora -->
+    <div class="add-instruktor">
+        <h3>Dodaj novog instruktora</h3>
+        <select [(ngModel)]="selectedKorisnik" (change)="selectKorisnik(selectedKorisnik)">
+          <option [value]="" disabled selected>Odaberi korisnika</option>
+          <option *ngFor="let korisnik of korisniciInstruktori" [value]="korisnik.ime + ' ' + korisnik.prezime">
+            {{ korisnik.ime }} {{ korisnik.prezime }}
+          </option>
+        </select>
+        <input
+          type="text"
+          [(ngModel)]="newInstruktor.kategorije"
+          placeholder="Unesi kategorije (razdvojene zarezima)"
+        />
+        <button (click)="addInstruktor()" [disabled]="!isValidInstruktor(newInstruktor)">Dodaj Instruktora</button>
+      </div>
+  
+    <!-- Tablica instruktora -->
+    <table *ngIf="instruktori.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Ime i Prezime</th>
+          <th>Kategorije</th>
+          <th>Akcije</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let instruktor of instruktori">
+            <td>{{ instruktor.korisnik.id }}</td>
+            <td>{{ instruktor.korisnik.ime }} {{ instruktor.korisnik.prezime }}</td>
+          <td *ngIf="!instruktor.isEditing">{{ instruktor.kategorije.join(', ') }}</td>
+          <td *ngIf="instruktor.isEditing">
+            <input
+              [(ngModel)]="instruktor.kategorije"
+              placeholder="Kategorije (razdvojene zarezima)"
+            />
+          </td>
+          <td>
+            <div class="button-group">
+              <ng-container *ngIf="!instruktor.isEditing">
+                <button class="edit-button" (click)="editInstruktor(instruktor)">Uredi</button>
+                <button class="delete-button" (click)="deleteInstruktor(instruktor.korisnik.id)">
+                  Obriši
+                </button>
+              </ng-container>
+              <ng-container *ngIf="instruktor.isEditing">
+                <button
+                  class="save-button"
+                  (click)="updateInstruktor(instruktor)"
+                  [disabled]="!isValidInstruktor(instruktor)"
+                >
+                  Spremi
+                </button>
+                <button class="cancel-button" (click)="instruktor.isEditing = false">Odustani</button>
+              </ng-container>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="instruktori.length === 0">
+      <p>Nema dostupnih instruktora.</p>
+    </div>
+  </div>
+  

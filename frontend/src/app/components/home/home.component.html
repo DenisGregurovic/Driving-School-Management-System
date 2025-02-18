@@ -1,0 +1,132 @@
+<div class="home-container">
+  <!-- Hero Section -->
+  <div class="hero-banner">
+    <img
+      src="https://i0.wp.com/autoskola-oktan.hr/wp-content/uploads/2020/07/Untitled_HDR2-copy-1.jpg?resize=1500%2C630&ssl=1"
+      alt="Hero banner"
+      class="hero-image"
+    />
+    <div class="hero-text">
+      Jedina autoškola za vas
+    </div>
+  </div>
+
+  <!-- Info Section -->
+  <div class="info-section">
+    <div class="cards">
+      <div class="card">
+        <h3>Kategorije u ponudi</h3>
+        <p>
+          Autoškola Oktan trenutno pruža usluge osposobljavanja za ukupno četiri
+          kategorije: A, B i C kategoriju. Osposobljavanje se obavlja na
+          vlastitim stručno opremljenim vozilima.
+        </p>
+        <button routerLink="/kategorije-users">Više</button>
+      </div>
+      <div class="card">
+        <h3>Instruktori i zaposlenici</h3>
+        <p>
+          Od nas možete očekivati osposobljene instruktore, predavače i
+          djelatnike u našoj autoškoli. Sa mnogo godina iskustva popis svih
+          zaposlenih i ostale informacije pogledaj na linku ispod.
+        </p>
+        <button routerLink="/instruktori-users">Više</button>
+      </div>
+      <div class="card">
+        <h3>Popis usluga</h3>
+        <p>
+          Na stranici Popis usluga možete pronaći detaljne informacije o svim
+          uslugama koje nudimo, uključujući opis svake usluge, dostupne
+          kategorije i pripadajuće cijene. Sve što trebate za kvalitetnu vožnju
+          i obuku nalazi se na jednom mjestu!
+        </p>
+        <button routerLink="/usluge-users">Više</button>
+      </div>
+    </div>
+    <div class="about-us">
+      <img
+        src="https://i0.wp.com/autoskola-oktan.hr/wp-content/uploads/2018/02/logo.png?fit=1030%2C702&ssl=1"
+        alt="Logo Autoškola OKTAN"
+      />
+
+      <div class="about-text">
+        <h2>O nama</h2>
+        <p>
+          Dobro došli na internetske stranice Autoškole “OKTAN” te Vas ovim putem srdačno pozdravljamo.
+        </p>
+        <p>
+          Nalazimo se u vlastitom poslovnom prostoru u Krapini što možete i vidjeti na našoj stranici.
+        </p>
+        <p>
+          Autoškola u ovom trenutku osposobljava polaznike za vozače A, B i C kategorije (Prema
+          novom Zakonu o sigurnosti i prometu na cestama) sa stručno i visokoobrazovanim kadrovima,
+          opremom i vozilima što isto tako možete vidjeti ispod teksta.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Location and Email Section -->
+  <div class="content">
+    <!-- Google Mapa -->
+    <div class="map-container">
+      <h2>Lokacija autoškole</h2>
+      <iframe
+        src="https://www.google.com/maps/embed/v1/place?q=Ul.%20Ivana%20Rendića,%2049000,%20Krapina&key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!-- Forma za email -->
+    <div class="email-section">
+      <h2>Pošaljite nam upit</h2>
+      <form [formGroup]="emailForm" (ngSubmit)="submitForm()">
+        <div class="form-group">
+          <label for="senderEmail">Vaš email</label>
+          <input
+            id="senderEmail"
+            formControlName="senderEmail"
+            type="email"
+            placeholder="Unesite vašu email adresu"
+          />
+          <div *ngIf="emailForm.get('senderEmail')?.invalid && emailForm.get('senderEmail')?.touched" class="error">
+            Email mora biti ispravan.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Naslov</label>
+          <input
+            id="subject"
+            formControlName="subject"
+            type="text"
+            placeholder="Unesite naslov"
+          />
+          <div *ngIf="emailForm.get('subject')?.invalid && emailForm.get('subject')?.touched" class="error">
+            Naslov je obavezan.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Poruka</label>
+          <textarea
+            id="message"
+            formControlName="message"
+            rows="5"
+            placeholder="Unesite vašu poruku"
+          ></textarea>
+          <div *ngIf="emailForm.get('message')?.invalid && emailForm.get('message')?.touched" class="error">
+            Poruka je obavezna.
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="emailForm.invalid">Pošalji</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container">
+    <h1>Usluge</h1>
+  
+    <!-- Dodavanje nove usluge -->
+    <div class="add-service">
+      <h3>Dodaj novu uslugu</h3>
+      <input
+        type="text"
+        [(ngModel)]="newUsluga.ime"
+        placeholder="Ime usluge"
+      />
+      <textarea
+        [(ngModel)]="newUsluga.opis"
+        placeholder="Opis usluge"
+      ></textarea>
+      <input
+        type="number"
+        [(ngModel)]="newUsluga.cijena"
+        placeholder="Cijena usluge"
+      />
+      <button
+        (click)="addUsluga()"
+        [disabled]="!newUsluga.ime.trim() || !newUsluga.opis.trim() || newUsluga.cijena <= 0"
+        class="add-button"
+      >
+        Dodaj
+      </button>
+    </div>
+  
+    <!-- Tablica usluga --><table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ime</th>
+      <th>Opis</th>
+      <th>Cijena</th>
+      <th>Akcije</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let service of usluge">
+      <td>{{ service.id }}</td>
+      <td *ngIf="isEditing !== service.id">{{ service.ime }}</td>
+      <td *ngIf="isEditing === service.id">
+        <input [(ngModel)]="service.ime" />
+      </td>
+      <td *ngIf="isEditing !== service.id">{{ service.opis }}</td>
+      <td *ngIf="isEditing === service.id">
+        <textarea [(ngModel)]="service.opis"></textarea>
+      </td>
+      <td *ngIf="isEditing !== service.id">{{ service.cijena | currency }}</td>
+      <td *ngIf="isEditing === service.id">
+        <input type="number" [(ngModel)]="service.cijena" />
+      </td>
+      <td>
+        <div class="button-group">
+          <ng-container *ngIf="isEditing !== service.id">
+            <button class="edit-button" (click)="editUsluga(service.id)">Uredi</button>
+            <button class="delete-button" (click)="deleteUsluga(service.id)">Obriši</button>
+          </ng-container>
+          <ng-container *ngIf="isEditing === service.id">
+            <button
+              class="save-button"
+              (click)="updateUsluga(service)"
+              [disabled]="!service.ime.trim() || !service.opis.trim() || !service.cijena"
+            >
+              Spremi
+            </button>
+            <button class="cancel-button" (click)="cancelEdit()">Odustani</button>
+          </ng-container>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  
+    <div *ngIf="usluge.length === 0">
+      <p>Nema dostupnih usluga.</p>
+    </div>
+  </div>

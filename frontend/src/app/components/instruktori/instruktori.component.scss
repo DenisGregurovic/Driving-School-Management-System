@@ -1,0 +1,80 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  
+    h1 {
+      text-align: center;
+    }
+  
+    .add-instruktor {
+      margin-bottom: 20px;
+  
+      input,
+      select {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+  
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+  
+      .button-group {
+        display: flex;
+        gap: 5px;
+  
+        button {
+          padding: 5px 10px;
+          border: none;
+          border-radius: 4px;
+  
+          &.edit-button {
+            background-color: #ffc107;
+            color: white;
+          }
+  
+          &.delete-button {
+            background-color: #dc3545;
+            color: white;
+          }
+  
+          &.save-button {
+            background-color: #28a745;
+            color: white;
+          }
+  
+          &.cancel-button {
+            background-color: #6c757d;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  

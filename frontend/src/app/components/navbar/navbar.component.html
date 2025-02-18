@@ -1,0 +1,21 @@
+<nav class="navbar">
+    <div class="navbar-container">
+      <a class="navbar-brand" [routerLink]="'/'">Oktan</a>
+      <ul class="navbar-links">
+        <li><a [routerLink]="'/home'">Početna</a></li>
+        <li><a [routerLink]="'/kategorije-users'">Kategorije</a></li>
+        <li><a [routerLink]="'/usluge-users'">Usluge</a></li>
+        <li><a [routerLink]="'/instruktori-users'">Instruktor</a></li>
+        <li *ngIf="authenticated && activeUser?.razina_prava === 'admin'">
+          <a [routerLink]="'/admin'">Admin</a>
+        </li>
+        
+        <li *ngIf="authenticated"><a [routerLink]="'/profil'">Moj profil</a></li>
+        <li *ngIf="!authenticated"><a [routerLink]="'/login'">Login</a></li>
+        <li *ngIf="!authenticated"><a [routerLink]="'/register'">Registracija</a></li>
+        <li *ngIf="authenticated"><a (click)="logout()">Odjava</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  

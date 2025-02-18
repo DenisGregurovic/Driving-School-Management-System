@@ -1,0 +1,71 @@
+<div class="container">
+  <h1>Kategorije</h1>
+
+  <!-- Dodavanje nove kategorije -->
+  <div class="add-service">
+    <h3>Dodaj novu kategoriju</h3>
+    <input
+      type="text"
+      [(ngModel)]="newKategorija.ime"
+      placeholder="Ime kategorije"
+    />
+    <textarea
+      [(ngModel)]="newKategorija.opis"
+      placeholder="Opis kategorije"
+    ></textarea>
+    <button
+      (click)="addKategorija()"
+      [disabled]="!newKategorija.ime.trim() || !newKategorija.opis.trim()"
+      class="add-button"
+    >
+      Dodaj
+    </button>
+  </div>
+
+  <!-- Tablica kategorija -->
+  <table *ngIf="kategorije.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Ime</th>
+        <th>Opis</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of kategorije">
+        <td>{{ category.id }}</td>
+        <td *ngIf="isEditing !== category.id">{{ category.ime }}</td>
+        <td *ngIf="isEditing === category.id">
+          <input [(ngModel)]="category.ime" />
+        </td>
+        <td *ngIf="isEditing !== category.id">{{ category.opis }}</td>
+        <td *ngIf="isEditing === category.id">
+          <textarea [(ngModel)]="category.opis"></textarea>
+        </td>
+        <td>
+          <div class="button-group">
+            <ng-container *ngIf="isEditing !== category.id">
+              <button class="edit-button" (click)="editKategorija(category.id)">Uredi</button>
+              <button class="delete-button" (click)="deleteKategorija(category.id)">Obriši</button>
+            </ng-container>
+            <ng-container *ngIf="isEditing === category.id">
+              <button
+                class="save-button"
+                (click)="updateKategorija(category)"
+                [disabled]="!category.ime.trim() || !category.opis.trim()"
+              >
+                Spremi
+              </button>
+              <button class="cancel-button" (click)="cancelEdit()">Odustani</button>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="kategorije.length === 0">
+    <p>Nema dostupnih kategorija.</p>
+  </div>
+</div>

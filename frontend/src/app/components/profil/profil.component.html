@@ -1,0 +1,86 @@
+<div class="profile-container">
+    <h1>Moj Profil</h1>
+  
+    <!-- Dodavanje nove rezervacije -->
+    <div class="add-rezervacija">
+      <h3>Dodaj novu rezervaciju</h3>
+      <div class="form-group">
+        <label for="instruktor">Instruktor</label>
+        <select
+          id="instruktor"
+          [(ngModel)]="selectedInstruktor"
+          (change)="selectInstruktor(selectedInstruktor)"
+        >
+          <option [value]="" disabled selected>Odaberi instruktora</option>
+          <option
+            *ngFor="let instruktor of instruktori"
+            [value]="instruktor.korisnik.ime + ' ' + instruktor.korisnik.prezime"
+          >
+            {{ instruktor.korisnik.ime }} {{ instruktor.korisnik.prezime }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="usluga">Usluga</label>
+        <select
+          id="usluga"
+          [(ngModel)]="selectedUsluga"
+          (change)="selectUsluga(selectedUsluga)"
+        >
+          <option [value]="" disabled selected>Odaberi uslugu</option>
+          <option *ngFor="let usluga of usluge" [value]="usluga.ime">
+            {{ usluga.ime }}
+          </option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="datum">Datum</label>
+        <input
+          type="date"
+          id="datum"
+          [(ngModel)]="newRezervacija.datum"
+          placeholder="Odaberi datum"
+        />
+      </div>
+  
+      <button
+        class="btn-primary"
+        (click)="addRezervacija()"
+        [disabled]="!isValidRezervacija()"
+      >
+        Dodaj rezervaciju
+      </button>
+    </div>
+  
+    <!-- Moje rezervacije -->
+    <h3>Moje Rezervacije</h3>
+    <table *ngIf="rezervacije.length > 0">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Instruktor</th>
+            <th>Usluga</th>
+            <th>Datum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rezervacija of rezervacije">
+            <td>{{ rezervacija.id }}</td>
+            <td>
+              {{ rezervacija.instruktor.korisnik.ime }}
+              {{ rezervacija.instruktor.korisnik.prezime }}
+            </td>
+            <td>{{ rezervacija.usluga.ime }}</td>
+            <td>{{ rezervacija.datum | date: 'dd.MM.yyyy.' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+  
+    <div *ngIf="rezervacije.length === 0" class="no-reservations">
+      <p>Nema dostupnih rezervacija.</p>
+    </div>
+  </div>
+  

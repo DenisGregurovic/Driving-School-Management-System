@@ -1,0 +1,35 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      cursor: pointer;
+      user-select: none;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    color: #666;
+  }
+}

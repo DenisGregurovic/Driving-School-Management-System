@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Usluge</h1>
+
+  <!-- Tablica usluga -->
+  <table *ngIf="usluge.length > 0">
+    <thead>
+      <tr>
+        <th (click)="sort('id')">ID</th>
+        <th (click)="sort('ime')">Ime</th>
+        <th (click)="sort('opis')">Opis</th>
+        <th (click)="sort('cijena')">Cijena</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usluga of usluge | usluge: sortColumn : isAscending">
+        <td>{{ usluga.id }}</td>
+        <td>{{ usluga.ime }}</td>
+        <td>{{ usluga.opis }}</td>
+        <td>{{ usluga.cijena | currency }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="usluge.length === 0">
+    <p>Nema dostupnih usluga.</p>
+  </div>
+</div>

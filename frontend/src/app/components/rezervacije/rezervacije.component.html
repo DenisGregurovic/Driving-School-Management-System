@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>Rezervacije</h1>
+
+  <!-- Dodavanje nove rezervacije -->
+  <div class="add-rezervacija">
+    <h3>Dodaj novu rezervaciju</h3>
+    <select [(ngModel)]="selectedKorisnik" (change)="selectKorisnik(selectedKorisnik)">
+      <option [value]="" disabled selected>Odaberi korisnika</option>
+      <option *ngFor="let korisnik of korisnici" [value]="korisnik.ime + ' ' + korisnik.prezime">
+        {{ korisnik.ime }} {{ korisnik.prezime }}
+      </option>
+    </select>
+    <select [(ngModel)]="selectedInstruktor" (change)="selectInstruktor(selectedInstruktor)">
+      <option [value]="" disabled selected>Odaberi instruktora</option>
+      <option *ngFor="let instruktor of instruktori" [value]="instruktor.korisnik.ime + ' ' + instruktor.korisnik.prezime">
+        {{ instruktor.korisnik.ime }} {{ instruktor.korisnik.prezime }}
+      </option>
+    </select>
+    <select [(ngModel)]="selectedUsluga" (change)="selectUsluga(selectedUsluga)">
+      <option [value]="" disabled selected>Odaberi uslugu</option>
+      <option *ngFor="let usluga of usluge" [value]="usluga.ime">
+        {{ usluga.ime }}
+      </option>
+    </select>
+    <input
+      type="date"
+      [(ngModel)]="newRezervacija.datum"
+      placeholder="Odaberi datum"
+    />
+    <button (click)="addRezervacija()" [disabled]="!isValidRezervacija()">Dodaj rezervaciju</button>
+  </div>
+
+  <!-- Tablica rezervacija -->
+  <table *ngIf="rezervacije.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Korisnik</th>
+        <th>Instruktor</th>
+        <th>Usluga</th>
+        <th>Datum</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let rezervacija of rezervacije">
+        <td>{{ rezervacija.id }}</td>
+        <td *ngIf="!rezervacija.isEditing">
+          {{ rezervacija.korisnik.ime }} {{ rezervacija.korisnik.prezime }}
+        </td>
+        <td *ngIf="rezervacija.isEditing">
+          <select [(ngModel)]="rezervacija.korisnik" [ngModelOptions]="{ standalone: true }">
+            <option *ngFor="let korisnik of korisnici" [ngValue]="korisnik">
+              {{ korisnik.ime }} {{ korisnik.prezime }}
+            </option>
+          </select>
+        </td>
+        <td *ngIf="!rezervacija.isEditing">
+          {{ rezervacija.instruktor.korisnik.ime }} {{ rezervacija.instruktor.korisnik.prezime }}
+        </td>
+        <td *ngIf="rezervacija.isEditing">
+          <select [(ngModel)]="rezervacija.instruktor" [ngModelOptions]="{ standalone: true }">
+            <option *ngFor="let instruktor of instruktori" [ngValue]="instruktor">
+              {{ instruktor.korisnik.ime }} {{ instruktor.korisnik.prezime }}
+            </option>
+          </select>
+        </td>
+        <td *ngIf="!rezervacija.isEditing">{{ rezervacija.usluga.ime }}</td>
+        <td *ngIf="rezervacija.isEditing">
+          <select [(ngModel)]="rezervacija.usluga" [ngModelOptions]="{ standalone: true }">
+            <option *ngFor="let usluga of usluge" [ngValue]="usluga">
+              {{ usluga.ime }}
+            </option>
+          </select>
+        </td>
+        <td *ngIf="!rezervacija.isEditing">{{ rezervacija.datum | date: 'dd.MM.yyyy.' }}</td>
+        <td *ngIf="rezervacija.isEditing">
+          <input
+            type="date"
+            [(ngModel)]="rezervacija.datum"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </td>
+        <td>
+          <div class="button-group">
+            <ng-container *ngIf="!rezervacija.isEditing">
+              <button class="edit-button" (click)="editRezervacija(rezervacija)">Uredi</button>
+              <button class="delete-button" (click)="deleteRezervacija(rezervacija.id)">Obriši</button>
+            </ng-container>
+            <ng-container *ngIf="rezervacija.isEditing">
+              <button
+                class="save-button"
+                (click)="saveRezervacija(rezervacija)"
+                [disabled]="!isValidRezervacijaEdit(rezervacija)"
+              >
+                Spremi
+              </button>
+              <button class="cancel-button" (click)="cancelEditRezervacija(rezervacija)">Odustani</button>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="rezervacije.length === 0">
+    <p>Nema dostupnih rezervacija.</p>
+  </div>
+</div>

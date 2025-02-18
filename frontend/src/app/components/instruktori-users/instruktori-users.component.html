@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Instruktori</h1>
+
+  <!-- Tablica instruktora -->
+  <table *ngIf="instruktori.length > 0">
+    <thead>
+      <tr>
+        <th (click)="sort('korisnik.id')">ID</th>
+        <th (click)="sort('korisnik.ime')">Ime i Prezime</th>
+        <th (click)="sort('kategorije')">Kategorije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let instruktor of instruktori | inst: sortColumn : isAscending">
+        <td>{{ instruktor.korisnik.id }}</td>
+        <td>{{ instruktor.korisnik.ime }} {{ instruktor.korisnik.prezime }}</td>
+        <td>{{ instruktor.kategorije.join(', ') }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="instruktori.length === 0">
+    <p>Nema dostupnih instruktora.</p>
+  </div>
+</div>
